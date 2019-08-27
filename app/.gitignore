@@ -1,0 +1,11 @@
+/build
+/local.properties
+/captures
+/.idea
+/.externalNativeBuild
+*.class
+*.iml
+*.log
+*.dex
+*.ap_
+*.DS_Store

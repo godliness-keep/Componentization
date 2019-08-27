@@ -1,0 +1,42 @@
+/**
+ * 公共依赖库
+ * */
+apply plugin: 'com.android.library'
+
+def cogfig = rootProject.ext.android
+def releaseUrl = rootProject.ext.serviceReleaseUrl
+def debugUrl = rootProject.ext.serviceDebugUrl
+
+android {
+    compileSdkVersion cogfig.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion cogfig.minSdkVersion
+        targetSdkVersion cogfig.targetSdkVersion
+        versionCode cogfig.versionCode
+        versionName cogfig.versionName
+    }
+
+    buildTypes {
+        release {
+            resValue("string", "projectUrl", releaseUrl["projectUrl"])
+        }
+        debug {
+            resValue("string", "projectUrl", debugUrl["projectUrl"])
+        }
+    }
+
+    //改变BuildConfig
+    publishNonDefault true
+}
+
+//改变BuildConfig.DEBUG的值
+configurations {
+    debug
+    release
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+}

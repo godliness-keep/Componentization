@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+def config = rootProject.ext.android
+def appid = rootProject.ext.appId
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    defaultConfig {
+        applicationId appid["app"]
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    if (isModule) {
+        //module1
+        debugImplementation project(path: ':module1', configuration: 'debug')
+        releaseImplementation project(path: ':module1', configuration: 'release')
+
+        //module2
+        debugImplementation project(path: ':module2', configuration: 'debug')
+        releaseImplementation project(path: ':module2', configuration: 'release')
+    }
+
+    //common module
+    debugImplementation project(path: ':module-common', configuration: 'debug')
+    releaseImplementation project(path: ':module-common', configuration: 'release')
+}

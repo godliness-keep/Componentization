@@ -1,0 +1,36 @@
+ext {
+
+    /**
+     * true为集成模式，false为组件模式
+     * */
+    isModule = false
+
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: '26.0.2',
+            minSdkVersion    : 16,
+            targetSdkVersion : 28,
+            versionCode      : 1,
+            versionName      : '1.0.1'
+    ]
+
+    appId = [
+            "app"    : "com.godliness.android.splat",
+            "module1": "com.godliness.android.module1",
+            "module2": "com.godliness.android.module2",
+    ]
+
+    /**
+     * release service environment
+     * */
+    serviceReleaseUrl = [
+            "projectUrl": "https://xxx.xxx.cn/Study",
+    ]
+
+    /**
+     * debug service environment
+     * */
+    serviceDebugUrl = [
+            "projectUrl": "http://xxx.xxx.com/API",
+    ]
+}

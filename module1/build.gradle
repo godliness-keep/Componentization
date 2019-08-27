@@ -1,0 +1,74 @@
+/**
+ * 业务模块1
+ * */
+if (isModule) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+
+def config = rootProject.ext.android
+def appid = rootProject.ext.appId
+
+android {
+    compileSdkVersion config.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.config
+        versionName config.versionName
+
+        //组件模式，指定ApplicationId
+        if (!isModule) {
+            applicationId appid["module1"]
+        }
+
+        //AndroidSourceSet
+        sourceSets {
+            main {
+                //指定不同的AndroidManifest.xml，组件模式下创建一个新的module目录专门存放
+                //集成模式下，不需要Application，通过指定不同的源码编译目录进行区分，避免无用的进行编译打包
+                if (isModule) {
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                } else {
+                    manifest.srcFile 'src/main/module/AndroidManifest.xml'
+                    //指定源码目录，可以指定多个
+                    java.srcDirs 'src/main/module/java', 'src/main/java'
+                }
+            }
+        }
+
+        //增加一条boolean类型变量，指定当前是集成模式或组件模式
+        //变量添加到BuildConfig中
+        buildConfigField("boolean", "isModule", String.valueOf(isModule))
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+
+        }
+    }
+
+    //改变BuildConfig
+    publishNonDefault true
+}
+
+//改变BuildConfig.DEBUG的值
+configurations {
+    debug
+    release
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    //common module
+    debugImplementation project(path: ':module-common', configuration: 'debug')
+    releaseImplementation project(path: ':module-common', configuration: 'release')
+}
