@@ -1,11 +1,14 @@
 /**
  * 业务模块1
  * */
+
 if (isModule) {
     apply plugin: 'com.android.library'
 } else {
     apply plugin: 'com.android.application'
 }
+
+def sdk = rootProject.ext.publicSdkDependencies
 
 def config = rootProject.ext.android
 def appid = rootProject.ext.appId
@@ -66,7 +69,8 @@ configurations {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    implementation sdk["appcompat-v7"]
 
     //common module
     debugImplementation project(path: ':module-common', configuration: 'debug')

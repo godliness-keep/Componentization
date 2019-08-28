@@ -1,0 +1,21 @@
+
+ext {
+
+    publicSdkVersion = [
+            supportLibrary   : "28.0.0",
+            supportConstraint: "1.1.3"
+    ]
+
+    /**
+     * 公共sdk库版本管理
+     * */
+    publicSdkDependencies = [
+            "appcompat-v7"       : "com.android.support:appcompat-v7:${publicSdkVersion.supportLibrary}",
+            "recyclerview-v7"    : "com.android.support:recyclerview-v7:${publicSdkVersion.supportLibrary}",
+            "design"             : "com.android.support:design:${publicSdkVersion.supportLibrary}",
+            "cardview-v7"        : "com.android.support:cardview-v7:${publicSdkVersion.supportLibrary}",
+            "support-v4"         : "com.android.support:support-v4:${publicSdkVersion.supportLibrary}",
+            "support-annotations": "com.android.support:support-annotations:${publicSdkVersion.supportLibrary}",
+            "support-constraint" : "com.android.support.constraint:constraint-layout:${publicSdkVersion.supportConstraint}"
+    ]
+}

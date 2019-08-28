@@ -1,9 +1,10 @@
+
 ext {
 
     /**
      * true为集成模式，false为组件模式
      * */
-    isModule = false
+    isModule = true
 
     android = [
             compileSdkVersion: 28,

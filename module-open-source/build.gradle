@@ -1,13 +1,6 @@
-/**
- * 公共依赖库
- * */
 apply plugin: 'com.android.library'
 
 def config = rootProject.ext.android
-
-
-def debugUrl = rootProject.ext.serviceDebugUrl
-def releaseUrl = rootProject.ext.serviceReleaseUrl
 
 android {
     compileSdkVersion config.compileSdkVersion
@@ -21,25 +14,17 @@ android {
 
     buildTypes {
         release {
-            resValue("string", "projectUrl", releaseUrl["projectUrl"])
-            // ...
-        }
-        debug {
-            resValue("string", "projectUrl", debugUrl["projectUrl"])
-            // ...
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
-    //改变BuildConfig
-    publishNonDefault true
-}
-
-//改变BuildConfig.DEBUG的值
-configurations {
-    debug
-    release
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    /**
+     * 开源框架依赖
+     * */
 }

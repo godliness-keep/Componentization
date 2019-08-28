@@ -2,6 +2,10 @@
 //引入自定义gradle文件
 apply from : "config.gradle"
 
+
+
+apply from : "sdk.gradle"
+
 buildscript {
     repositories {
         google()
