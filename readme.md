@@ -1,9 +1,10 @@
 ### Componentization Project
 
 ---
+> Android模块化配置实例项目
 
 #### 推荐阅读
-    * [Android 模块化到组件化项目架构演化之路](www.baidu.com)
+* [Android 模块化到组件化项目架构演化之路](www.baidu.com)
 
 
 #### Modular layered design
