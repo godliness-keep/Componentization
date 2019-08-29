@@ -44,16 +44,16 @@ dependencies {
 
     if (isModule) {
         //module1
-        debugImplementation project(path: ':module1', configuration: 'debug')
-        releaseImplementation project(path: ':module1', configuration: 'release')
+        debugImplementation project(':module1')
+        releaseImplementation project(':module1')
 
         //module2
-        debugImplementation project(path: ':module2', configuration: 'debug')
-        releaseImplementation project(path: ':module2', configuration: 'release')
+        debugImplementation project(':module2')
+        releaseImplementation project(':module2')
     }
 
     //common module
-    debugImplementation project(path: ':module-common', configuration: 'debug')
-    releaseImplementation project(path: ':module-common', configuration: 'release')
+    debugImplementation project(':module-common')
+    releaseImplementation project(':module-common')
 
 }

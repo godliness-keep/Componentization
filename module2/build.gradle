@@ -68,6 +68,10 @@ dependencies {
     implementation sdk["appcompat-v7"]
 
     //common module
-    debugImplementation project(path: ':module-common', configuration: 'debug')
-    releaseImplementation project(path: ':module-common', configuration: 'release')
+    debugImplementation project(':module-common')
+    releaseImplementation project(':module-common')
+
+    //common open source
+    debugImplementation project(':module-open-source')
+    releaseImplementation project(':module-open-source')
 }
