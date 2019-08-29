@@ -1,2 +1,3 @@
 <resources>
+    <string name="test">测试资源</string>
 </resources>

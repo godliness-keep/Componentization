@@ -5,7 +5,6 @@ apply plugin: 'com.android.library'
 
 def config = rootProject.ext.android
 
-
 def debugUrl = rootProject.ext.serviceDebugUrl
 def releaseUrl = rootProject.ext.serviceReleaseUrl
 
