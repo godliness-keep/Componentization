@@ -1,4 +1,7 @@
 include ':app',
+        ':router:router-annotation',
+        ':router:router-compiler',
+        ':router:router-core',
         ':module-open-source',
         ':module-common',
         ':module1',

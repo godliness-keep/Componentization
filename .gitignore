@@ -6,3 +6,6 @@
 /build
 /captures
 .externalNativeBuild
+/route-compiler
+/router-annotation
+/router-core
